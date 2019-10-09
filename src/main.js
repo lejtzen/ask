@@ -28,6 +28,26 @@ export default function (Vue, { router, head, isClient }) {
         name: 'charset',
         content: 'UTF-8'
     })
+
+    // Viewport
+    head.meta.push({
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
+    })
+
+    // Web app
+    head.meta.push({
+        name: 'apple-mobile-web-app-capable',
+        content: 'yes'
+    })
+    head.meta.push({
+        name: 'apple-mobile-web-app-title',
+        content: 'Chat'
+    })
+    head.meta.push({
+        name: 'apple-mobile-web-app-status-bar-style',
+        content: 'black-translucent'
+    })
 }
 
 // Import SASS
