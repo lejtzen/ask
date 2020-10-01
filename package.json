@@ -12,7 +12,7 @@
     "gridsome": "^0.7.0"
   },
   "devDependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.20.0",
     "gh-pages": "^2.1.1",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.0"
