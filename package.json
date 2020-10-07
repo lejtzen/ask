@@ -16,5 +16,22 @@
     "gh-pages": "^3.1.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.2"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all",
+    "overrides": [
+      {
+        "files": [
+          "*.html",
+          "*.js",
+          "*.vue"
+        ],
+        "options": {
+          "tabWidth": 4
+        }
+      }
+    ]
   }
 }
