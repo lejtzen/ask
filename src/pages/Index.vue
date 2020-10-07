@@ -60,38 +60,10 @@
                                     : 'mg-t-xs',
                             ]"
                         >
-                            <div
-                                class="br-radius-md"
-                                :class="[
-                                    message.type,
-                                    message.sender == 'bot'
-                                        ? 'received bg-grey'
-                                        : 'sent bg-blue text-light-primary',
-                                ]"
-                            >
-                                <div v-if="message.type == 'attachment'">
-                                    <div class="replay">
-                                        <button
-                                            class="text-blue"
-                                            @click="replay(message.body)"
-                                        >
-                                            <g-image
-                                                src="~/assets/images/refresh.svg"
-                                                alt="Replay"
-                                            />
-                                            Replay
-                                        </button>
-                                    </div>
-                                    <g-image
-                                        class="br-radius-md"
-                                        v-freeze="message.body"
-                                        :src="message.body"
-                                    />
-                                </div>
-                                <span v-else>
-                                    {{ message.body }}
-                                </span>
-                            </div>
+                            <MessageItem
+                                :message="message"
+                                @replay="onReplay"
+                            />
                         </li>
                     </transition-group>
                 </div>
@@ -131,10 +103,12 @@
 <script>
 import axios from 'axios'
 import MessageForm from '@/components/MessageForm.vue'
+import MessageItem from '@/components/MessageItem.vue'
 
 export default {
     components: {
         MessageForm,
+        MessageItem,
     },
 
     metaInfo: {
@@ -334,21 +308,19 @@ export default {
             }, 1500)
         },
 
-        replay: function(attachment) {
-            var self = this
-
-            this.preload(attachment).then(function() {
+        onReplay(attachment) {
+            this.preload(attachment).then(() => {
                 // Visa wallpaper
-                self.wallpaper = attachment
-                self.visible.top = false
-                self.visible.bottom = false
-                self.visible.wallpaper = true
+                this.wallpaper = attachment
+                this.visible.top = false
+                this.visible.bottom = false
+                this.visible.wallpaper = true
 
                 // Lägg tillbaka allt
-                setTimeout(function() {
-                    self.visible.top = true
-                    self.visible.bottom = true
-                    self.visible.wallpaper = false
+                setTimeout(() => {
+                    this.visible.top = true
+                    this.visible.bottom = true
+                    this.visible.wallpaper = false
                 }, 5000)
             })
         },
