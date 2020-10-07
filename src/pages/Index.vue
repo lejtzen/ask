@@ -91,11 +91,7 @@
         </transition>
 
         <transition name="fade">
-            <div
-                id="wallpaper"
-                v-if="visible.wallpaper"
-                :style="{ 'background-image': 'url(' + wallpaper + ')' }"
-            ></div>
+            <MessageWallpaper v-if="visible.wallpaper" :wallpaper="wallpaper" />
         </transition>
     </Layout>
 </template>
@@ -104,11 +100,13 @@
 import axios from 'axios'
 import MessageForm from '@/components/MessageForm.vue'
 import MessageItem from '@/components/MessageItem.vue'
+import MessageWallpaper from '@/components/MessageWallpaper.vue'
 
 export default {
     components: {
         MessageForm,
         MessageItem,
+        MessageWallpaper,
     },
 
     metaInfo: {
