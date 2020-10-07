@@ -26,7 +26,9 @@
         "files": [
           "*.html",
           "*.js",
-          "*.vue"
+          "*.vue",
+          "*.css",
+          "*.scss"
         ],
         "options": {
           "tabWidth": 4

@@ -115,28 +115,7 @@
         </transition>
 
         <transition name="slide-up">
-            <div id="bottom" class="flex valign bg-frost" v-if="visible.bottom">
-                <div class="x-right x-bottom x-left">
-                    <form class="form" v-on:submit.prevent="handleSubmit">
-                        <textarea
-                            class="textarea br-radius-md"
-                            name="message"
-                            rows="1"
-                            placeholder="Whats up?"
-                            v-model="message"
-                            v-on:keyup.enter.prevent.stop="handleSubmit"
-                            ref="textarea"
-                        ></textarea>
-                        <button class="button" type="submit" :disabled="!valid">
-                            <g-image
-                                style="display: block; width: auto; height: 28px;"
-                                src="~/assets/images/angle-up.svg"
-                                alt="Send"
-                            />
-                        </button>
-                    </form>
-                </div>
-            </div>
+            <MessageForm v-if="visible.bottom" @newMessage="onNewMessage" />
         </transition>
 
         <transition name="fade">
@@ -151,8 +130,13 @@
 
 <script>
 import axios from 'axios'
+import MessageForm from '@/components/MessageForm.vue'
 
 export default {
+    components: {
+        MessageForm,
+    },
+
     metaInfo: {
         title: 'A funny mobile chat made by Vincent Lejtzén',
         meta: [
@@ -173,7 +157,6 @@ export default {
             user: {
                 name: '',
             },
-            message: '',
             conversation: [],
             wallpaper: '',
             visible: {
@@ -183,12 +166,6 @@ export default {
                 wallpaper: false,
             },
         }
-    },
-
-    computed: {
-        valid: function() {
-            return this.message.trim().length > 0
-        },
     },
 
     beforeMount: function() {
@@ -225,12 +202,6 @@ export default {
         }
     },
 
-    watch: {
-        message: function() {
-            this.message = this.message.replace(/(\r\n|\n|\r)/gm, '')
-        },
-    },
-
     methods: {
         preload: function(attachment) {
             return new Promise(function(resolve, reject) {
@@ -243,15 +214,8 @@ export default {
             })
         },
 
-        handleSubmit: function() {
-            if (!this.valid) {
-                return
-            }
-
-            this.sendMessage(
-                this.createMessage('user', 'message', this.message),
-            )
-            this.message = ''
+        onNewMessage: function(body) {
+            this.sendMessage(this.createMessage('user', 'message', body))
 
             this.sendResponse()
         },
@@ -310,8 +274,6 @@ export default {
             setTimeout(function() {
                 self.bot.writing = true
             }, 500)
-
-            this.$refs.textarea.blur()
 
             setTimeout(function() {
                 axios
