@@ -52,11 +52,11 @@
                             <span class="writing"></span>
                             <span
                                 class="writing"
-                                style="animation-delay: .25s;"
+                                style="animation-delay: -.25s;"
                             ></span>
                             <span
                                 class="writing"
-                                style="animation-delay: .5s;"
+                                style="animation-delay: -.5s;"
                             ></span>
                         </div>
                     </div>
