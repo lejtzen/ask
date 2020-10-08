@@ -1,40 +1,31 @@
 <template>
     <Layout>
         <transition name="slide-down">
-            <div id="top" class="bg-frost" v-if="visible.top">
-                <div class="x-top x-left x-right">
-                    <div class="flex valign" v-if="visible.top">
-                        <button
-                            class="pd-x-xs"
-                            @click="clearConversation()"
-                            :disabled="!conversation.length"
-                        >
-                            <g-image
-                                style="display: block; width: auto; height: 28px;"
-                                src="~/assets/images/trash.svg"
-                                alt="Clear conversation"
-                            />
-                        </button>
+            <Navigation :name="bot.name" v-if="visible.top">
+                <template v-slot:left>
+                    <button
+                        class="pd-x-xs"
+                        @click="clearConversation()"
+                        :disabled="!conversation.length"
+                    >
+                        <g-image
+                            style="display: block; width: auto; height: 28px;"
+                            src="~/assets/images/trash.svg"
+                            alt="Clear conversation"
+                        />
+                    </button>
+                </template>
 
-                        <div class="grow text-center">
-                            <g-image
-                                src="~/assets/images/profile.jpg"
-                                alt="Vincent Lejtzén"
-                                style="display: block; margin: 0 auto; width: auto; height: 38px; border-radius: 1000px;"
-                            />
-                        </div>
-
-                        <button class="pd-x-xs" @click="showInfo()">
-                            <g-image
-                                style="display: block; width: auto; height: 28px;"
-                                src="~/assets/images/info.svg"
-                                alt="Information"
-                            />
-                        </button>
-                    </div>
-                    <div class="text-xs text-center">{{ bot.name }}</div>
-                </div>
-            </div>
+                <template v-slot:right>
+                    <button class="pd-x-xs" @click="showInfo()">
+                        <g-image
+                            style="display: block; width: auto; height: 28px;"
+                            src="~/assets/images/info.svg"
+                            alt="Information"
+                        />
+                    </button>
+                </template>
+            </Navigation>
         </transition>
 
         <transition name="fade">
@@ -76,12 +67,14 @@
 
 <script>
 import axios from 'axios'
+import Navigation from '@/components/Navigation.vue'
 import MessageForm from '@/components/MessageForm.vue'
 import MessageList from '@/components/MessageList.vue'
 import MessageWallpaper from '@/components/MessageWallpaper.vue'
 
 export default {
     components: {
+        Navigation,
         MessageForm,
         MessageList,
         MessageWallpaper,
