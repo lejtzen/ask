@@ -44,29 +44,7 @@
                 class="x-all"
                 :class="{ fullscreen: visible.wallpaper }"
             >
-                <div>
-                    <transition-group
-                        name="list"
-                        tag="ul"
-                        class="messages pd-x-xs"
-                    >
-                        <li
-                            v-for="(message, index) in conversation"
-                            :key="message.id"
-                            :class="[
-                                conversation[index - 1] &&
-                                conversation[index - 1].sender == message.sender
-                                    ? 'mg-t-min'
-                                    : 'mg-t-xs',
-                            ]"
-                        >
-                            <MessageItem
-                                :message="message"
-                                @replay="onReplay"
-                            />
-                        </li>
-                    </transition-group>
-                </div>
+                <MessageList :conversation="conversation" />
 
                 <transition name="fade">
                     <div class="mg-t-xs pd-x-xs" v-if="bot.writing">
@@ -99,13 +77,13 @@
 <script>
 import axios from 'axios'
 import MessageForm from '@/components/MessageForm.vue'
-import MessageItem from '@/components/MessageItem.vue'
+import MessageList from '@/components/MessageList.vue'
 import MessageWallpaper from '@/components/MessageWallpaper.vue'
 
 export default {
     components: {
         MessageForm,
-        MessageItem,
+        MessageList,
         MessageWallpaper,
     },
 
