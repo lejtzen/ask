@@ -8,6 +8,8 @@
                     <g-image
                         src="~/assets/images/profile.jpg"
                         alt="Vincent Lejtzén"
+                        width="76"
+                        height="76"
                         style="display: block; margin: 0 auto; width: auto; height: 38px; border-radius: 1000px;"
                     />
                 </div>
@@ -20,13 +22,13 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            name: {
-                type: String,
-                required: false,
-                default: 'Mr. Bot',
-            }
+export default {
+    props: {
+        name: {
+            type: String,
+            required: false,
+            default: 'Mr. Bot',
         },
-    }
+    },
+}
 </script>

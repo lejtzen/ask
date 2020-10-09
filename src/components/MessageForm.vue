@@ -15,6 +15,8 @@
                     <g-image
                         style="display: block; width: auto; height: 28px;"
                         src="~/assets/images/angle-up.svg"
+                        width="28"
+                        height="28"
                         alt="Send"
                     />
                 </button>

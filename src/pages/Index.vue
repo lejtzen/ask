@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <transition name="slide-down" appear>
+        <transition name="slide-down">
             <Navigation :name="bot.name" v-if="visible.top">
                 <template v-slot:left>
                     <button
@@ -11,6 +11,8 @@
                         <g-image
                             style="display: block; width: auto; height: 28px;"
                             src="~/assets/images/trash.svg"
+                            width="28"
+                            height="28"
                             alt="Clear conversation"
                         />
                     </button>
@@ -21,6 +23,8 @@
                         <g-image
                             style="display: block; width: auto; height: 28px;"
                             src="~/assets/images/info.svg"
+                            width="28"
+                            height="28"
                             alt="Information"
                         />
                     </button>
@@ -28,7 +32,7 @@
             </Navigation>
         </transition>
 
-        <transition name="fade" appear>
+        <transition name="fade">
             <div
                 id="view"
                 v-if="visible.view"
@@ -55,7 +59,7 @@
             </div>
         </transition>
 
-        <transition name="slide-up" appear>
+        <transition name="slide-up">
             <MessageForm v-if="visible.bottom" @newMessage="onNewMessage" />
         </transition>
 
