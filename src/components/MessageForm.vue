@@ -2,16 +2,24 @@
     <div id="bottom" class="flex valign bg-frost">
         <div class="x-right x-bottom x-left">
             <form class="form" v-on:submit.prevent="handleSubmit">
+                <label for="message" class="sr-only">Message</label>
                 <textarea
+                    id="message"
                     class="textarea br-radius-md"
                     name="message"
                     rows="1"
-                    placeholder="Whats up?"
+                    placeholder="Message"
                     v-model="message"
                     v-on:keyup.enter.prevent.stop="handleSubmit"
                     ref="textarea"
                 ></textarea>
-                <button class="button" type="submit" :disabled="!valid">
+                <button
+                    class="button"
+                    type="submit"
+                    name="Send message"
+                    title="Send message"
+                    :disabled="!valid"
+                >
                     <g-image
                         style="display: block; width: auto; height: 28px;"
                         src="~/assets/images/angle-up.svg"

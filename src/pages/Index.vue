@@ -7,6 +7,8 @@
                         class="pd-x-xs"
                         @click="clearConversation()"
                         :disabled="!conversation.length"
+                        name="Clear conversation"
+                        title="Clear conversation"
                     >
                         <g-image
                             style="display: block; width: auto; height: 28px;"
@@ -19,7 +21,12 @@
                 </template>
 
                 <template v-slot:right>
-                    <button class="pd-x-xs" @click="showInfo()">
+                    <button
+                        class="pd-x-xs"
+                        @click="showInfo()"
+                        name="Show information"
+                        title="Show information"
+                    >
                         <g-image
                             style="display: block; width: auto; height: 28px;"
                             src="~/assets/images/info.svg"

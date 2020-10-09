@@ -10,7 +10,12 @@
     >
         <div v-if="isAttachment">
             <div class="replay">
-                <button class="text-blue" @click="replay(message.body)">
+                <button
+                    class="text-blue"
+                    @click="replay(message.body)"
+                    name="Replay message"
+                    title="Replay message"
+                >
                     <g-image
                         src="~/assets/images/refresh.svg"
                         width="14"
