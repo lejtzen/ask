@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <transition name="slide-down">
+        <transition name="slide-down" appear>
             <Navigation :name="bot.name" v-if="visible.top">
                 <template v-slot:left>
                     <button
@@ -28,7 +28,7 @@
             </Navigation>
         </transition>
 
-        <transition name="fade">
+        <transition name="fade" appear>
             <div
                 id="view"
                 v-if="visible.view"
@@ -55,7 +55,7 @@
             </div>
         </transition>
 
-        <transition name="slide-up">
+        <transition name="slide-up" appear>
             <MessageForm v-if="visible.bottom" @newMessage="onNewMessage" />
         </transition>
 
@@ -103,9 +103,9 @@ export default {
             conversation: [],
             wallpaper: '',
             visible: {
-                top: false,
-                view: false,
-                bottom: false,
+                top: true,
+                view: true,
+                bottom: true,
                 wallpaper: false,
             },
         }
@@ -119,18 +119,8 @@ export default {
     mounted: function() {
         var self = this
 
-        // TODO: Animera dessa när bilder är preloadade och konversation är hämtad från localStorage
-        // med Promise istället för timeOut.
-        setTimeout(function() {
-            self.visible.top = true
-            self.visible.view = true
-            self.visible.bottom = true
-        }, 1000)
-
         if (!this.conversation.length) {
-            setTimeout(function() {
-                self.bot.writing = true
-            }, 2000)
+            self.bot.writing = true
 
             setTimeout(function() {
                 self.bot.writing = false
@@ -141,7 +131,7 @@ export default {
                         "Hi there! Ask me anything and I'll give you a yes or no. Lets go 👊",
                     ),
                 )
-            }, 3500)
+            }, 2000)
         }
     },
 
