@@ -1,10 +1,6 @@
 <template>
     <div>
-        <transition-group
-            name="list"
-            tag="ul"
-            class="messages pd-x-xs"
-        >
+        <transition-group name="list" tag="ul" class="messages pd-x-xs">
             <li
                 v-for="(message, index) in conversation"
                 :key="message.id"
@@ -15,10 +11,7 @@
                         : 'mg-t-xs',
                 ]"
             >
-                <MessageItem
-                    :message="message"
-                    @replays="onReplay"
-                />
+                <MessageItem :message="message" @replay="onReplay" />
             </li>
         </transition-group>
     </div>

@@ -35,7 +35,7 @@
                 class="x-all"
                 :class="{ fullscreen: visible.wallpaper }"
             >
-                <MessageList :conversation="conversation" />
+                <MessageList :conversation="conversation" @replay="onReplay" />
 
                 <transition name="fade">
                     <div class="mg-t-xs pd-x-xs" v-if="bot.writing">
