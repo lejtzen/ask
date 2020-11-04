@@ -15,7 +15,7 @@
     "axios": "^0.21.0",
     "gh-pages": "^3.1.0",
     "node-sass": "^5.0.0",
-    "sass-loader": "^10.0.4"
+    "sass-loader": "^10.0.5"
   },
   "prettier": {
     "singleQuote": true,
