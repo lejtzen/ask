@@ -6,7 +6,7 @@
 
 module.exports = {
     siteName: 'ASK Lejtzén Design',
-    siteUrl: 'https://lejtzen.github.io',
-    pathPrefix: '/ask',
+    siteUrl: 'https://ask.lejtzendesign.se',
+    pathPrefix: '',
     plugins: [],
 }
