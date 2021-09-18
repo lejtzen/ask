@@ -2,7 +2,7 @@
 Funny chat based on yesno.wtf API.
 
 ## Live demo
-[View live demo](https://lejtzen.github.io/ask/)
+[View live demo](https://ask.lejtzendesign.se)
 
 ### 1. Install Gridsome CLI tool
 `npm install --global @gridsome/cli`
