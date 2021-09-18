@@ -122,13 +122,11 @@ export default {
         }
     },
 
-    beforeMount: function() {
-        this.retrieveConversation()
-        this.retrieveUser()
-    },
-
     mounted: function() {
         var self = this
+
+        this.retrieveConversation()
+        this.retrieveUser()
 
         if (!this.conversation.length) {
             self.bot.writing = true
