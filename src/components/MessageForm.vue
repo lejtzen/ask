@@ -12,6 +12,7 @@
                     v-model="message"
                     v-on:keyup.enter.prevent.stop="handleSubmit"
                     ref="textarea"
+                    enterkeyhint="send"
                 ></textarea>
                 <button
                     class="button"
