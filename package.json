@@ -10,8 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "npx prettier . --write",
-    "test": "vitest run"
+    "format": "npx prettier . --write"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.4",
@@ -25,8 +24,7 @@
   },
   "devDependencies": {
     "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^0.14.1",
-    "vitest": "^3.2.4"
+    "prettier-plugin-astro": "^0.14.1"
   },
   "allowScripts": {
     "@parcel/watcher@2.6.0": true,
