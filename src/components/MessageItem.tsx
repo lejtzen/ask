@@ -52,8 +52,10 @@ export default function MessageItem({ message, onReplay }: Props) {
             alt=""
           />
         </div>
-      ) : (
+      ) : message.sender === 'bot' ? (
         <span dangerouslySetInnerHTML={{ __html: message.body }} />
+      ) : (
+        <span>{message.body}</span>
       )}
     </div>
   )
