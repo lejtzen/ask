@@ -1,3 +1,4 @@
+@use "sass:meta";
 html,
 body {
   padding: 0;
@@ -305,7 +306,7 @@ iPhone X
 }
 
 // Utilities
-@import 'util';
+@include meta.load-css('util');
 
 // Animations
-@import 'animations';
+@include meta.load-css('animations');
