@@ -198,6 +198,11 @@ Messages
   padding: 8px 12px;
 }
 
+.message a {
+  color: rgb(0, 122, 255);
+  text-decoration: underline;
+}
+
 .attachment {
   max-width: calc(100% - 80px);
   position: relative;
