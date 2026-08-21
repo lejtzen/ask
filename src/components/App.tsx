@@ -21,12 +21,20 @@ interface Visible {
   wallpaper: boolean
 }
 
-const INITIAL_MESSAGE: Message = {
+export const INITIAL_MESSAGE: Message = {
   id: 'initial',
   sender: 'bot',
   type: 'message',
   time: new Date(0),
   body: `Hi there! Ask me anything and I'll give you a <a href="https://slumpgenerator.com/yes-or-no">yes or no</a>. Let's go 👊`,
+}
+
+export function normalizeConversation(
+  conversation: Message[] | null | undefined,
+): Message[] {
+  const list = Array.isArray(conversation) ? conversation : []
+  const withoutInitial = list.filter((message) => message.id !== INITIAL_MESSAGE.id)
+  return [INITIAL_MESSAGE, ...withoutInitial]
 }
 
 function createMessage(sender: string, type: string, message: string): Message {
@@ -87,8 +95,8 @@ export default function App() {
   })
 
   function sendMessage(message: Message, conv?: Message[]) {
-    const current = conv ?? conversation
-    const updated = [...current, message]
+    const current = normalizeConversation(conv ?? conversation)
+    const updated = normalizeConversation([...current, message])
     setConversation(updated)
     localStorage.setItem('conversation', JSON.stringify(updated))
     window.scrollTo(0, document.getElementById('view')?.offsetHeight ?? 0)
@@ -195,7 +203,9 @@ export default function App() {
     const saved = JSON.parse(localStorage.getItem('conversation') ?? 'null') as
       Message[] | null
     if (saved && saved.length > 0) {
-      setConversation(saved)
+      const normalized = normalizeConversation(saved)
+      setConversation(normalized)
+      localStorage.setItem('conversation', JSON.stringify(normalized))
     }
   }, [])
 
