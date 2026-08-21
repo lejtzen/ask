@@ -21,6 +21,14 @@ interface Visible {
   wallpaper: boolean
 }
 
+const INITIAL_MESSAGE: Message = {
+  id: 'initial',
+  sender: 'bot',
+  type: 'message',
+  time: new Date(0),
+  body: `Hi there! Ask me anything and I'll give you a <a href="https://slumpgenerator.com/yes-or-no">yes or no</a>. Let's go 👊`,
+}
+
 function createMessage(sender: string, type: string, message: string): Message {
   return {
     id:
@@ -69,7 +77,7 @@ function transformResponse(answer: string): string {
 export default function App() {
   const [bot] = useState({ name: 'Vincent Lejtzén' })
   const [botWriting, setBotWriting] = useState(false)
-  const [conversation, setConversation] = useState<Message[]>([])
+  const [conversation, setConversation] = useState<Message[]>([INITIAL_MESSAGE])
   const [wallpaper, setWallpaper] = useState('')
   const [visible, setVisible] = useState<Visible>({
     top: true,
@@ -77,7 +85,6 @@ export default function App() {
     bottom: true,
     wallpaper: false,
   })
-  const [initialized, setInitialized] = useState(false)
 
   function sendMessage(message: Message, conv?: Message[]) {
     const current = conv ?? conversation
@@ -168,7 +175,7 @@ export default function App() {
         'Are you sure you want to delete the conversation?',
       )
       if (confirmed) {
-        setConversation([])
+        setConversation([INITIAL_MESSAGE])
         localStorage.removeItem('conversation')
       }
     }
@@ -185,31 +192,13 @@ export default function App() {
   }
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('conversation') ?? 'null')
-    let initial: Message[] = []
-    if (saved) {
-      initial = saved
-      setConversation(initial)
-    }
-    setInitialized(true)
-
-    if (!initial.length) {
-      setBotWriting(true)
-      setTimeout(() => {
-        setBotWriting(false)
-        const msg = createMessage(
-          'bot',
-          'message',
-          `Hi there! Ask me anything and I'll give you a <a href="https://slumpgenerator.com/yes-or-no">yes or no</a>. Let's go 👊`,
-        )
-        const updated = [...initial, msg]
-        setConversation(updated)
-        localStorage.setItem('conversation', JSON.stringify(updated))
-      }, 2000)
+    const saved = JSON.parse(
+      localStorage.getItem('conversation') ?? 'null',
+    ) as Message[] | null
+    if (saved && saved.length > 0) {
+      setConversation(saved)
     }
   }, [])
-
-  if (!initialized) return null
 
   return (
     <>
