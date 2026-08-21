@@ -137,7 +137,7 @@ export default {
                     self.createMessage(
                         'bot',
                         'message',
-                        "Hi there! Ask me anything and I'll give you a yes or no. Lets go 👊",
+                        `Hi there! Ask me anything and I'll give you a <a href="https://slumpgenerator.com/yes-or-no">yes or no</a>. Let's go 👊`,
                     ),
                 )
             }, 2000)

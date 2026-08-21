@@ -1,20 +1,46 @@
-# ask
-Funny chat based on yesno.wtf API.
+# Astro Starter Kit: Basics
 
-## Live demo
-[View live demo](https://ask.lejtzendesign.se)
+```sh
+npm create astro@latest -- --template basics
+```
 
-### 1. Install Gridsome CLI tool
-`npm install --global @gridsome/cli`
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-### 2. Install dependencies
-`npm install`
+## 🚀 Project Structure
 
-### 3. Develop
-Run `gridsome develop` to start a local dev server at `http://localhost:8080` for development
+Inside of your Astro project, you'll see the following folders and files:
 
-### 4. Build
-Use `gridsome build` to generate static files in a `/dist` folder
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
+```
 
-### 5. Publish
-Publish contents of `/dist` folder in the public folder of your web server or read more about [Gridsome deployment](https://gridsome.org/docs/deployment/)
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
