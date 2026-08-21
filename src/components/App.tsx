@@ -21,11 +21,7 @@ interface Visible {
   wallpaper: boolean
 }
 
-function createMessage(
-  sender: string,
-  type: string,
-  message: string,
-): Message {
+function createMessage(sender: string, type: string, message: string): Message {
   return {
     id:
       Math.random().toString(36).substring(2) +
@@ -103,11 +99,19 @@ export default function App() {
 
           preload(data.image).then(() => {
             setWallpaper(data.image)
-            setVisible({ top: false, view: true, bottom: false, wallpaper: true })
+            setVisible({
+              top: false,
+              view: true,
+              bottom: false,
+              wallpaper: true,
+            })
 
             let latest = conv
             setTimeout(() => {
-              latest = sendMessage(createMessage('bot', 'attachment', data.image), latest)
+              latest = sendMessage(
+                createMessage('bot', 'attachment', data.image),
+                latest,
+              )
             }, 2000)
 
             setTimeout(() => {
@@ -118,7 +122,12 @@ export default function App() {
             }, 3000)
 
             setTimeout(() => {
-              setVisible({ top: true, view: true, bottom: true, wallpaper: false })
+              setVisible({
+                top: true,
+                view: true,
+                bottom: true,
+                wallpaper: false,
+              })
             }, 5000)
           })
         })

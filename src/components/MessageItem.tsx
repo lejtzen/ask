@@ -40,7 +40,11 @@ export default function MessageItem({ message, onReplay }: Props) {
                 width={14}
                 height={14}
                 alt="Replay"
-                style={{ display: 'inline-block', verticalAlign: 'middle', marginBottom: '2px' }}
+                style={{
+                  display: 'inline-block',
+                  verticalAlign: 'middle',
+                  marginBottom: '2px',
+                }}
               />
               Replay
             </button>
@@ -48,7 +52,12 @@ export default function MessageItem({ message, onReplay }: Props) {
           <img
             className="br-radius-md"
             src={message.body}
-            style={{ display: 'block', width: '100%', height: 'auto', margin: 0 }}
+            style={{
+              display: 'block',
+              width: '100%',
+              height: 'auto',
+              margin: 0,
+            }}
             alt=""
           />
         </div>
