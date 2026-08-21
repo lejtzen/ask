@@ -192,9 +192,8 @@ export default function App() {
   }
 
   useEffect(() => {
-    const saved = JSON.parse(
-      localStorage.getItem('conversation') ?? 'null',
-    ) as Message[] | null
+    const saved = JSON.parse(localStorage.getItem('conversation') ?? 'null') as
+      Message[] | null
     if (saved && saved.length > 0) {
       setConversation(saved)
     }

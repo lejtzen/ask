@@ -14,13 +14,7 @@ interface Props {
   onReplay: (attachment: string) => void
 }
 
-function FrozenImage({
-  src,
-  className,
-}: {
-  src: string
-  className?: string
-}) {
+function FrozenImage({ src, className }: { src: string; className?: string }) {
   const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
